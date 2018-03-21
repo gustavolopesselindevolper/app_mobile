@@ -139,6 +139,7 @@ $$('.logoff').on('click', function() {
     $$('input#email').val('');
     $$('input#password').val('');
     $$('.logoff').hide();
+    $$('.SingIn').show();
     $$('.login-screen-open').show();
   }, function(error){
     console.error(error)
