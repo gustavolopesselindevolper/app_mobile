@@ -67,9 +67,8 @@ $$('#my-login-screen .SingUp').on('click', function () {
         alert(JSON.stringify(formData))
         firebase.database().ref().child('usuarios').push(JSON.stringify(formData))
     });
-  app.loginScreen.close('#my-login-screen');
+  app.loginScreen.close('Falha ao cadastrar, verifique o erro no console');
   })
-  0
   app.loginScreen.close('#my-login-screen');
 });
 
@@ -103,10 +102,48 @@ $$('#my-login-screen .SingIn').on('click', function () {
 
 
 
+$$('#my-login-screen .SignOut').on('click', function () {
+  app.loginScreen.close('#my-login-screen');
+  $$('input#email').val('');
+  $$('input#password').val('');
+  firebase
+    .auth()
+    .signOut()
+    .then( function () {
+      this.$$('.toolbar-inner').text('Usuário não autenticado');
+      app.dialog.alert('Usuário não autenticado');
+      app.loginScreen.close('#my-login-screen');
+      $$('.logoff').hide();
+      $$('.login-screen-open').show();      
+    }, function(error){
+      console.error(error)
+    })
+});
+
+$$('#my-login-screen .login-screen-close').on('click', function () {
+  $$('input#emailInput').val('');
+  $$('input#passwordInput').val('');
+});
+
+$$('.logoff').on('click', function () {
+  firebase
+    .auth()
+    .signOut()
+    .then( function () {
+      this.$$('.toolbar-inner').text('Usuário não autenticado');
+      app.dialog.alert('Usuário não autenticado');
+      $$('input#email').val('');
+      $$('input#password').val('');
+      $$('.logoff').hide();
+      $$('.login-screen-open').show();
+    }, function(error){
+      console.error(error)
+    })  
+  });
 
 
 
-$$('#my-login-screen .logoff').on('click', function () {
+$$('#my-login-screen .SingOut').on('click', function () {
   app.loginScreen.close('#my-login-screen');
     $$('input#email').val('');
     $$('input#password').val('');
@@ -139,7 +176,6 @@ $$('.logoff').on('click', function() {
     $$('input#email').val('');
     $$('input#password').val('');
     $$('.logoff').hide();
-    $$('.SingIn').show();
     $$('.login-screen-open').show();
   }, function(error){
     console.error(error)
