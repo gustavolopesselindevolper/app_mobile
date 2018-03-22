@@ -6,13 +6,13 @@ $$(document).on('page:init', '.page[data-name="listar_produtos"]', function (e) 
         $$("#usersList").empty();
     
         snapshot.forEach(function(item){
-              var listHtml = '<tr>';
-                listHtml += '<td class="label-cell">'+item.key+'</td>';
-                listHtml += '<td class="label-cell">'+item.val().Email+'</td>';
-                listHtml += '<td class="label-cell">'+item.val().Mensagem+'</td>';
-                listHtml += '<td class="label-cell">'+item.val().Nome+'</td>';
-                listHtml += '<td class="label-cell">'+item.val().Telefone+'</td>';
-                listHtml += '</tr>';
+              var listHtml = '<div>';
+                //listHtml += '<td class="label-cell">'+item.key+'</td>';
+                listHtml += '<div class="col-25">'+ item.val().Email +'</div>';
+                listHtml += '<div class="col-25">'+ item.val().Mensagem +'</div>';
+                listHtml += '<div class="col-25">'+ item.val().Nome +'</div>';
+                listHtml += '<div class="col-25">'+ item.val().Telefone +'</div>';
+                listHtml += '</div>';
                 //e.append(listHtml).innerHTML;
                 $$("#usersList").append(listHtml);
     

@@ -62,7 +62,7 @@ $$('#my-login-screen .SingUp').on('click', function () {
         app.dialog.alert('Email invalido no seu formato!!!');
       }$$('#btnSalvar').on('click', function () {
         var formData = app.form.convertToData('#form-user-content')
-        var nameInput = $$('#name [name="name"]').val();
+        var nameInput = $$('#name [name="email"]').val();
         var nameInput = $$('#password [name="password"]').val();
         alert(JSON.stringify(formData))
         firebase.database().ref().child('usuarios').push(JSON.stringify(formData))
