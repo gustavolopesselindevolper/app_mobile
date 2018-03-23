@@ -1,22 +1,22 @@
 var $$ = Dom7;
 
 $$(document).on('page:init', '.page[data-name="listar_produtos"]', function (e) {
-    firebase.database().ref('orcamentos').on('value', function (snapshot){
+    firebase.database().ref('estoque').on('value', function (snapshot){
         //usersList.innerHTML = '';
         $$("#usersList").empty();
     
         snapshot.forEach(function(item){
-              var listHtml = '<div class="row">';
+              var listHtml = '<div class="row block block-strong">';
                 //listHtml += '<td class="label-cell">'+item.key+'</td>';
                 listHtml += '<div class="col-25">'+ item.val().Nome +'</div>';
-                listHtml += '<div class="col-25">'+ item.val().Email +'</div>';
-                listHtml += '<div class="col-25">'+ item.val().Telefone +'</div>';
-                listHtml += '<div class="col-25">'+ item.val().Mensagem +'</div>';
+                listHtml += '<div class="col-25">'+ item.val().Fabricante +'</div>';
+                listHtml += '<div class="col-25">'+ item.val().Descricao +'</div>';
+                listHtml += '<div class="col-25">'+ item.val().Preco +'</div>';
                 listHtml += '</div>';
                 //e.append(listHtml).innerHTML;
                 $$("#usersList").append(listHtml);
     
-    
+            
         })
     })
     

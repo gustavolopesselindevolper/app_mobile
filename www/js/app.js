@@ -1,6 +1,8 @@
 // Dom7
 var $$ = Dom7;
 $$('.logoff').hide();
+$$('.orcamentoindex').hide();
+$$('.estoqueindex').hide();
 $$('.login-screen-open').show();
 
 
@@ -85,6 +87,8 @@ $$('#my-login-screen .SingIn').on('click', function () {
       app.dialog.alert('Bem vindo: ' + username);
       this.$$('.toolbar-inner').text('Bem Vindo: ' + username + 'vc está logado!');
       $$('.logoff').show();
+      $$('.orcamentoindex').show();
+      $$('.estoqueindex').show();
       $$('.login-screen-open').hide();
       $$('input#email').val('');
       $$('input#password').val('');
@@ -135,6 +139,8 @@ $$('.logoff').on('click', function () {
       $$('input#email').val('');
       $$('input#password').val('');
       $$('.logoff').hide();
+      $$('.orcamentoindex').hide();
+      $$('.estoqueindex').hide();
       $$('.login-screen-open').show();
     }, function(error){
       console.error(error)
