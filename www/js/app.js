@@ -1,7 +1,6 @@
 // Dom7
 var $$ = Dom7;
 $$('.logoff').hide();
-$$('.orcamentoindex').hide();
 $$('.estoqueindex').hide();
 $$('.login-screen-open').show();
 
