@@ -2,6 +2,9 @@
 var $$ = Dom7;
 $$('.logoff').hide();
 $$('.estoqueindex').hide();
+$$('.orcamentoindexadm').hide();
+$$('.cadastropromocao').hide();
+$$('.estoqueadm').hide();
 $$('.login-screen-open').show();
 
 
@@ -85,12 +88,31 @@ $$('#my-login-screen .SingIn').on('click', function () {
     .then( function () {
       app.dialog.alert('Bem vindo: ' + username);
       this.$$('.toolbar-inner').text('Bem Vindo: ' + username + 'vc está logado!');
+
+
+
+      if(username == "admin@gmail.com"){
+      $$('.orcamentoindexadm').show();
+      $$('.estoqueindexadm').show();  
+      $$('.cadastropromocao').show();
+      $$('.estoqueadm').show();
+      $$('.logoff').show();
+      $$('.login-screen-open').hide();
+      $$('input#email').val('');
+      $$('input#password').val('');
+      }
+      else{
       $$('.logoff').show();
       $$('.orcamentoindex').show();
       $$('.estoqueindex').show();
       $$('.login-screen-open').hide();
       $$('input#email').val('');
       $$('input#password').val('');
+      }
+      
+
+
+      
     })
     .catch(function(error){
       console.error(error.code)
@@ -159,6 +181,9 @@ $$('#my-login-screen .SingOut').on('click', function () {
       this.$$('.toolbar-inner').text('Usuario nao autenticado');
       app.dialog.alert('Usuario nao autenticado');
       app.loginScreen.close('#my-login-screen');
+      $$('.orcamentoindexadm').hide();
+      $$('.estoqueindexadm').hide();
+      $$('.estoqueadm').hide(); 
       $$('.logoff').hide();
       $$('.login-screen-open').show();
     }, function(error){
@@ -208,4 +233,25 @@ $$('#addButton').on('click', function () {
     console.error(error)
   })
 });
+
+$$('#addButtonpromocao').on('click', function () {
+  var nome = $$('#nome').val();
+  var email = $$('#fabricante').val();
+  var telefone = $$('#descricao').val();
+
+  var formData = {Nome: nome, Fabricante: fabricante, Descricao: descricao}
+  console.log(formData);
+  firebase.database().ref().child('esoque').push(formData)
+  .then( function () {
+    app.dialog.alert('Orçamento Efetuado com Sucesso');
+    $$('input#nome').val('');
+    $$('input#fabricante').val('');
+    $$('input#descricao').val('');
+  }, function(error){
+    app.dialog.alert('Erro, confira o console');
+    console.error(error)
+  })
+});
+
+
 

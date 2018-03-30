@@ -1,4 +1,8 @@
-<div class="page color-theme-green" data-name="listar_produtos">
+<script src="js/app.js"></script>
+<script src="js/estoqueadm.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+<script src="js/firebaseapp.js"></script>
+<div class="page color-theme-green" data-name="listar_produtosadm">
     <div class="navbar color-theme-green">
       <div class="navbar-inner sliding">
         <div class="left">
@@ -13,11 +17,13 @@
     <div class="page-content">
       <div class="block-title">PRODUTOS EM PROMOÇÃO</div>
         <div class="block">
+            <input type="text" id="excluir" placeholder="Escreva o nome do produto para excluir"/>
+            <input type="button" id="apaga" value="apagar" onclick="apagar()">
             <div class="row">
-                <div class="col-25 fontestoque">Nome</div>
-                <div class="col-25 fontestoque">Fabricante</div>
-                <div class="col-25 fontestoque">Descrição</div>
-                <div class="col-25 fontestoque">Preco</div>
+                <div class="col-20 fontestoque">Nome</div>
+                <div class="col-20 fontestoque">Fabricante</div>
+                <div class="col-20 fontestoque">Descrição</div>
+                <div class="col-20 fontestoque">Preco</div>
             </div>
            <div id="usersList">
            </div>

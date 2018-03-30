@@ -37,6 +37,14 @@ routes = [
     url: './pages/listar_produtos.html',
   },
   {
+    path: '/estoqueadm/',
+    url: './pages/listar_produtosadm.html',
+  },
+  {
+    path: '/orcamentos/',
+    url: './pages/listar_orcamentos.html',
+  },
+  {
     path: '/left-page-2/',
     url: './pages/left-page-2.html',
   },
